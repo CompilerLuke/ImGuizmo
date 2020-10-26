@@ -103,30 +103,24 @@ void EditTransform(const Camera& camera, matrix_t& matrix)
 #endif
 #pragma once
 
-#ifdef USE_IMGUI_API
-#include "imconfig.h"
-#endif
-#ifndef IMGUI_API
-#define IMGUI_API
-#endif
 
 namespace ImGuizmo
 {
 	// call inside your own window and before Manipulate() in order to draw gizmo to that window.
-	IMGUI_API void SetDrawlist();
+	void SetDrawlist();
 
 	// call BeginFrame right after ImGui_XXXX_NewFrame();
-	IMGUI_API void BeginFrame();
+	void BeginFrame();
 
 	// return true if mouse cursor is over any gizmo control (axis, plan or screen component)
-	IMGUI_API bool IsOver();
+	bool IsOver();
 
 	// return true if mouse IsOver or if the gizmo is in moving state
-	IMGUI_API bool IsUsing();
+	bool IsUsing();
 
 	// enable/disable the gizmo. Stay in the state until next call to Enable.
 	// gizmo is rendered with gray half transparent color when disabled
-	IMGUI_API void Enable(bool enable);
+	void Enable(bool enable);
 
 	// helper functions for manualy editing translation/rotation/scale with an input float
 	// translation, rotation and scale float points to 3 floats each
@@ -140,16 +134,16 @@ namespace ImGuizmo
 	// ImGuizmo::RecomposeMatrixFromComponents(matrixTranslation, matrixRotation, matrixScale, gizmoMatrix.m16);
 	//
 	// These functions have some numerical stability issues for now. Use with caution.
-	IMGUI_API void DecomposeMatrixToComponents(const float *matrix, float *translation, float *rotation, float *scale);
-	IMGUI_API void RecomposeMatrixFromComponents(const float *translation, const float *rotation, const float *scale, float *matrix);
+	void DecomposeMatrixToComponents(const float *matrix, float *translation, float *rotation, float *scale);
+	void RecomposeMatrixFromComponents(const float *translation, const float *rotation, const float *scale, float *matrix);
 
-	IMGUI_API void SetRect(float x, float y, float width, float height);
+	void SetRect(float x, float y, float width, float height);
 	// default is false
-	IMGUI_API void SetOrthographic(bool isOrthographic);
+	void SetOrthographic(bool isOrthographic);
 
 	// Render a cube with face color corresponding to face normal. Usefull for debug/tests
-	IMGUI_API void DrawCube(const float *view, const float *projection, const float *matrix);
-	IMGUI_API void DrawGrid(const float *view, const float *projection, const float *matrix, const float gridSize);
+	void DrawCube(const float *view, const float *projection, const float *matrix);
+	void DrawGrid(const float *view, const float *projection, const float *matrix, const float gridSize);
 
 	// call it when you want a gizmo
 	// Needs view and projection matrices. 
@@ -169,5 +163,5 @@ namespace ImGuizmo
 		WORLD
 	};
 
-	IMGUI_API void Manipulate(const float *view, const float *projection, OPERATION operation, MODE mode, float *matrix, float *deltaMatrix = 0, float *snap = 0, float *localBounds = NULL, float *boundsSnap = NULL);
+	void Manipulate(const float *view, const float *projection, OPERATION operation, MODE mode, float *matrix, float *deltaMatrix = 0, float *snap = 0, float *localBounds = NULL, float *boundsSnap = NULL);
 };

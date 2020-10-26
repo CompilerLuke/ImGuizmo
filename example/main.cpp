@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "imgui.h"
 #define IMAPP_IMPL
 #include "ImApp.h"

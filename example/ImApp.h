@@ -13,7 +13,7 @@
 #  define glGetProcAddress(name) dlGetProcAddress(name)
 #elif defined(__ANDROID__)
 #  define glGetProcAddress(name) NULL /* TODO */
-#else /* __linux */
+#else  /* __linux /*
 #ifdef __cplusplus
 extern "C" {
 #endif
